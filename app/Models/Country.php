@@ -9,4 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Country extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $guarded = [];
+
+    public function states()
+    {
+        return $this->hasMany(State::class);
+    }
 }

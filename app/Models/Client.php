@@ -10,6 +10,8 @@ class Client extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = [];
+
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -23,5 +25,14 @@ class Client extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function getImageAttribute()
+    {
+        if ($this->photo && file_exists("uploads/clients/" . $this->photo)) :
+            return "/uploads/clients/" . $this->photo;
+        else :
+            return "/images/person.png";
+        endif;
     }
 }

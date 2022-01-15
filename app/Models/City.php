@@ -10,6 +10,8 @@ class City extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = [];
+
     public function country()
     {
         return $this->belongsTo(Country::class);

@@ -1,32 +1,76 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
+
+import Clients from './components/Clients/Index'
+import AddClient from './components/Clients/Form.vue'
+import EditClient from './components/Clients/Form.vue'
+import ShowClient from './components/Clients/Show';
 
 window.Vue = require('vue').default;
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import Vue from 'vue';
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
+Vue.mixin({
+    methods: {
+        capitalizeFirstLetter: str => str.charAt(0).toUpperCase() + str.slice(1),
+        currencyFormat(amount) {
+            alert(amount);
+        },
+        formatMoney(number, decPlaces, decSep, thouSep) {
+            // cart.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&.")
+            // return currencyFormatter(number, decPlaces, decSep, thouSep)
+        },
+    }
 });
+
+
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+const routes = [
+    {
+        path: "/clients",
+        name: "Clients",
+        component: Clients
+    },
+    {
+        path: "/clients/add",
+        name: "AddClient",
+        component: AddClient
+    },
+    {
+        path: "/clients/:id/show",
+        name: "ShowClient",
+        component: ShowClient
+    },
+    {
+        path: "/clients/:id/edit",
+        name: "EditClient",
+        component: EditClient
+    }
+];
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
+})
+
+window.addEventListener('load', function () {
+
+    let el = document.getElementById('app');
+    let messages = document.getElementById('messages');
+
+    if (el) {
+        const app = new Vue({
+            el: '#app',
+            router: router,
+            created: function () {
+                this.company = "Company Name";
+            }
+        });
+    }
+
+})
