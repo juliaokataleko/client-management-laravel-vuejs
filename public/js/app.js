@@ -2244,6 +2244,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2336,7 +2339,12 @@ __webpack_require__.r(__webpack_exports__);
     saveClient: function saveClient() {
       var _this5 = this;
 
-      // format date
+      if (this.client.name == "" || this.client.phone == "") {
+        alert("Preencha pelo menos o nome e o telefone");
+        return;
+      } // format date
+
+
       this.client.birthday = this.format_date(this.client.birthday);
       var formData = new FormData();
       formData.append("file", document.getElementById("file").files[0]);
@@ -2602,6 +2610,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -76435,6 +76446,12 @@ var render = function () {
                 _c("h4", [_vm._v("Aniversário")]),
                 _vm._v(" "),
                 _c("p", [_vm._v(_vm._s(_vm.client.birthday))]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Telefone")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.client.phone))]),
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),

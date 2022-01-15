@@ -53,6 +53,9 @@
             <h4>Aniversário</h4>
             <p>{{ client.birthday }}</p>
             <hr />
+            <h4>Telefone</h4>
+            <p>{{ client.phone }}</p>
+            <hr />
             <h4>E-mail</h4>
             <p>{{ client.email }}</p>
             <hr />

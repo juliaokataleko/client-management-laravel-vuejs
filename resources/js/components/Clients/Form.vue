@@ -48,10 +48,13 @@
           <div class="col-md-2">
             <div class="form-group">
               <label for="file">Excluir Foto</label>
-              <select class="form-control" :disabled="client.id == 0" 
-              v-model="delete_avatar">
-                  <option value="0">Não</option>
-                  <option value="1">Sim</option>
+              <select
+                class="form-control"
+                :disabled="client.id == 0"
+                v-model="delete_avatar"
+              >
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
               </select>
             </div>
           </div>
@@ -269,6 +272,11 @@ export default {
         });
     },
     saveClient() {
+
+      if (this.client.name == "" || this.client.phone == "") {
+        alert("Preencha pelo menos o nome e o telefone");
+        return;
+      }
       // format date
       this.client.birthday = this.format_date(this.client.birthday);
 
@@ -301,17 +309,15 @@ export default {
       } else {
         // insert new client
         axios
-          .post(`/api/clients`,formData)
+          .post(`/api/clients`, formData)
           .then((res) => {
-              alert("Cliente cadastrado.");
-                this.$router.push("/clients");
+            alert("Cliente cadastrado.");
+            this.$router.push("/clients");
             console.log(res);
           })
           .catch((error) => {
             console.log(error);
           });
-
-        
       }
     },
     format_date(value) {
