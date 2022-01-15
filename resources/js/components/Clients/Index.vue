@@ -42,7 +42,7 @@
               <tr v-for="client in clients" :key="client.id">
                 <td>
                   <img
-                    style="width: 40px; height: 40px"
+                    style="width: 40px; height: 40px; object-fit: cover"
                     :src="client.image"
                     :alt="client.name"
                   />

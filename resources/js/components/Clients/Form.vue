@@ -273,6 +273,8 @@ export default {
     },
     saveClient() {
 
+    this.loading = true;
+
       if (this.client.name == "" || this.client.phone == "") {
         alert("Preencha pelo menos o nome e o telefone");
         return;
@@ -299,13 +301,16 @@ export default {
         axios
           .post(`/api/clients?id=${this.$route.params.id}`, formData)
           .then((res) => {
-            alert("Cliente atualizado." + res);
+            alert("Cliente atualizado.");
             this.$router.push("/clients");
             console.log(res);
+            this.loading = false;
           })
           .catch((error) => {
             console.log(error);
+            this.loading = false;
           });
+
       } else {
         // insert new client
         axios
@@ -314,10 +319,14 @@ export default {
             alert("Cliente cadastrado.");
             this.$router.push("/clients");
             console.log(res);
+            this.loading = false;
           })
           .catch((error) => {
             console.log(error);
+            this.loading = false;
           });
+
+          
       }
     },
     format_date(value) {

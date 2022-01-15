@@ -2339,6 +2339,8 @@ __webpack_require__.r(__webpack_exports__);
     saveClient: function saveClient() {
       var _this5 = this;
 
+      this.loading = true;
+
       if (this.client.name == "" || this.client.phone == "") {
         alert("Preencha pelo menos o nome e o telefone");
         return;
@@ -2362,13 +2364,15 @@ __webpack_require__.r(__webpack_exports__);
       if (this.client.id != 0) {
         // update
         axios.post("/api/clients?id=".concat(this.$route.params.id), formData).then(function (res) {
-          alert("Cliente atualizado." + res);
+          alert("Cliente atualizado.");
 
           _this5.$router.push("/clients");
 
           console.log(res);
+          _this5.loading = false;
         })["catch"](function (error) {
           console.log(error);
+          _this5.loading = false;
         });
       } else {
         // insert new client
@@ -2378,8 +2382,10 @@ __webpack_require__.r(__webpack_exports__);
           _this5.$router.push("/clients");
 
           console.log(res);
+          _this5.loading = false;
         })["catch"](function (error) {
           console.log(error);
+          _this5.loading = false;
         });
       }
     },
@@ -76223,7 +76229,11 @@ var render = function () {
                         return _c("tr", { key: client.id }, [
                           _c("td", [
                             _c("img", {
-                              staticStyle: { width: "40px", height: "40px" },
+                              staticStyle: {
+                                width: "40px",
+                                height: "40px",
+                                "object-fit": "cover",
+                              },
                               attrs: { src: client.image, alt: client.name },
                             }),
                           ]),
