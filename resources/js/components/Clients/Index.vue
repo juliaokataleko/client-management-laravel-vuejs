@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="max-width: 900px; margin: 0 auto" v-if="showMessage">
+    <div style="max-width: 1200px; margin: 0 auto" v-if="showMessage">
       <div class="alert mb-3 alert-success">{{ message }}</div>
     </div>
 
@@ -8,17 +8,17 @@
       <i class="fas fa-circle-notch fa-spin"></i>
     </div>
 
-    <div v-if="!loading" class="card" style="max-width: 900px; margin: 0 auto">
+    <div v-if="!loading" class="card" style="max-width: 1200px; margin: 0 auto">
       <div
         class="
           card-header
-          d-sm-flex
+          d-flex
           align-items-center
           justify-content-between
           mb-2
         "
       >
-        <h5 class="h3 mb-0 text-gray-800">Lista de clientes</h5>
+        <h5 class="h3 mb-0 text-gray-800">Clientes</h5>
         <router-link class="ml-3 btn btn-primary" :to="{ name: 'AddClient' }"
           ><i class="fa fa-plus"></i
         ></router-link>

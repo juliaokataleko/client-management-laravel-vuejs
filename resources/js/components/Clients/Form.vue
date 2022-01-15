@@ -273,12 +273,13 @@ export default {
     },
     saveClient() {
 
-    this.loading = true;
-
       if (this.client.name == "" || this.client.phone == "") {
         alert("Preencha pelo menos o nome e o telefone");
         return;
       }
+
+      this.loading = true;
+      
       // format date
       this.client.birthday = this.format_date(this.client.birthday);
 

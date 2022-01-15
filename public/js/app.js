@@ -2339,13 +2339,12 @@ __webpack_require__.r(__webpack_exports__);
     saveClient: function saveClient() {
       var _this5 = this;
 
-      this.loading = true;
-
       if (this.client.name == "" || this.client.phone == "") {
         alert("Preencha pelo menos o nome e o telefone");
         return;
-      } // format date
+      }
 
+      this.loading = true; // format date
 
       this.client.birthday = this.format_date(this.client.birthday);
       var formData = new FormData();
@@ -76168,11 +76167,15 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.showMessage
-      ? _c("div", { staticStyle: { "max-width": "900px", margin: "0 auto" } }, [
-          _c("div", { staticClass: "alert mb-3 alert-success" }, [
-            _vm._v(_vm._s(_vm.message)),
-          ]),
-        ])
+      ? _c(
+          "div",
+          { staticStyle: { "max-width": "1200px", margin: "0 auto" } },
+          [
+            _c("div", { staticClass: "alert mb-3 alert-success" }, [
+              _vm._v(_vm._s(_vm.message)),
+            ]),
+          ]
+        )
       : _vm._e(),
     _vm._v(" "),
     _vm.loading
@@ -76186,18 +76189,18 @@ var render = function () {
           "div",
           {
             staticClass: "card",
-            staticStyle: { "max-width": "900px", margin: "0 auto" },
+            staticStyle: { "max-width": "1200px", margin: "0 auto" },
           },
           [
             _c(
               "div",
               {
                 staticClass:
-                  "\n        card-header\n        d-sm-flex\n        align-items-center\n        justify-content-between\n        mb-2\n      ",
+                  "\n        card-header\n        d-flex\n        align-items-center\n        justify-content-between\n        mb-2\n      ",
               },
               [
                 _c("h5", { staticClass: "h3 mb-0 text-gray-800" }, [
-                  _vm._v("Lista de clientes"),
+                  _vm._v("Clientes"),
                 ]),
                 _vm._v(" "),
                 _c(
